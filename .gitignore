@@ -1,0 +1,8 @@
+.module-cache/
+/node_modules
+/build
+logs
+*.log
+*.project
+.DS_Store
+.idea

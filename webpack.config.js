@@ -17,9 +17,9 @@ var common = {
     },
     module: {
         loaders: [{
-            test: /\.css$/,
-            loaders: ['style', 'css'],
-            include: path.resolve(ROOT_PATH, 'app')
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: "babel-loader"
         }]
     },
     plugins: [
@@ -34,13 +34,6 @@ var common = {
 if (TARGET === 'dev') {
     module.exports = merge(common, {
         devtool: 'source-map',
-        module: {
-            // loaders: [{
-            //     test: /\.jsx?$/,
-            //     loaders: ['react-hot', 'babel?stage=1'],
-            //     include: path.resolve(ROOT_PATH, 'app')
-            // }]
-        },
         devServer: {
             colors: true,
             historyApiFallback: true,
