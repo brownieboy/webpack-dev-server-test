@@ -42,7 +42,7 @@ if (TARGET === 'dev') {
             progress: true
         },
         plugins: [
-            new webpack.HotModuleReplacementPlugin()
+            new webpack.HotModuleReplacementPlugin()  // Needs to be here, even with devServer.hot set to true
         ]
     });
 }
