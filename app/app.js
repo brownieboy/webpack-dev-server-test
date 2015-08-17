@@ -9,4 +9,4 @@ class MikeyClass {
 }
 
 var mikeyObj = new MikeyClass();
-mikeyObj.doOutput("bananas 4");
+mikeyObj.doOutput("bananas 7");

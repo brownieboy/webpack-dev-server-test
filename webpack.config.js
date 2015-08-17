@@ -7,7 +7,9 @@ var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
-    entry: path.resolve(ROOT_PATH, 'app/app'),
+    entry: {
+        app: [path.resolve(ROOT_PATH, 'app/app')]
+    },
     resolve: {
         extensions: ['', '.js', '.jsx']
     },
@@ -33,16 +35,19 @@ var common = {
 
 if (TARGET === 'dev') {
     module.exports = merge(common, {
-        devtool: 'source-map',
-        devServer: {
-            colors: true,
-            historyApiFallback: true,
-            hot: true,
-            inline: true,
-            progress: true
-        },
-        plugins: [
-            new webpack.HotModuleReplacementPlugin()  // Needs to be here, even with devServer.hot set to true
-        ]
-    });
-}
+            entry: {
+                app: ['webpack/hot/dev-server', path.resolve(ROOT_PATH, 'app/app')]
+                },
+                devtool: 'source-map',
+                devServer: {
+                    colors: true,
+                    historyApiFallback: true,
+                    hot: true,
+                    inline: true,
+                    progress: true
+                },
+                plugins: [
+                    new webpack.HotModuleReplacementPlugin() // Needs to be here, even with devServer.hot set to true
+                ]
+            });
+    }
