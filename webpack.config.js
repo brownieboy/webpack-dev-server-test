@@ -1,5 +1,5 @@
 var path = require('path');
-var HtmlwebpackPlugin = require('html-webpack-plugin');
+// var HtmlwebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 
@@ -25,11 +25,11 @@ var common = {
         }]
     },
     plugins: [
-        new HtmlwebpackPlugin({
-            title: 'Webpack-dev-server test',
-            template: 'app/index.html',
-            inject: "body"
-        })
+        // new HtmlwebpackPlugin({
+        //     title: 'Webpack-dev-server test',
+        //     template: 'app/index.html',
+        //     inject: "body"
+        // })
     ]
 };
 
