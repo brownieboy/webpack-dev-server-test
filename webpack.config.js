@@ -8,7 +8,7 @@ var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
     entry: {
-        app: [path.resolve(ROOT_PATH, 'app/app.jsx')]
+        app: [path.resolve(ROOT_PATH, 'app/app')]
     },
     resolve: {
         extensions: ['', '.js', '.jsx']

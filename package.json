@@ -6,11 +6,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "TARGET=build webpack",
-    "buildwin": "SET TARGET=build&& webpack",
-    "startwin": "SET TARGET=dev&& webpack-dev-server",
-    "start": "TARGET=dev webpack-dev-server",
-    "wds": "webpack-dev-server"
+    "build": "TARGET=build webpack --display-error-details",
+    "buildwin": "SET TARGET=build&& webpack --display-error-details",
+    "startwin": "SET TARGET=dev&& webpack-dev-server  --display-error-details",
+    "start": "TARGET=dev webpack-dev-server  --display-error-details",
+    "wds": "webpack-dev-server  --display-error-details"
   },
   "author": "Michael Brown",
   "license": "ISC",
