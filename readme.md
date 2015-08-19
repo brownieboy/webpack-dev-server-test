@@ -19,7 +19,7 @@ npm run startX
 
 where "X" should be replaced with the number of the test, "1", "2" or "3".
 
-Once webpack-dev-server is running, open http://localhost:8080 in the Chrome browser.  Edit app/HelloWorld.jsx to add something, like a number, to the Hello World text inside the returned span, the save the file.
+Once webpack-dev-server is running, open http://localhost:8080 in the Chrome browser.  In your JavaScript editor of choice, edit app/HelloWorld.jsx to add something, like a number, to the Hello World text inside the returned span, the save the file.
 
 ### The Tests
 All testing done with Google Chrome's Dev Tools.
