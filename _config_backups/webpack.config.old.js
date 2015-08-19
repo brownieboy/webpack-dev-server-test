@@ -10,9 +10,6 @@ var common = {
     entry: {
         app: [path.resolve(ROOT_PATH, 'app/app.jsx')]
     },
-    // resolve: {
-    //     extensions: ['', '.js', '.jsx']
-    // },
     output: {
         path: path.resolve(ROOT_PATH, 'build'),
         filename: 'bundle.js'
