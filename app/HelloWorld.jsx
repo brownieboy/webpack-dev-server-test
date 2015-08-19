@@ -8,6 +8,6 @@ export default class HelloClass extends React.Component {
     }
 
  render() {
- 	return(<span>Hello world 7</span>);
+ 	return(<span>Hello world 17</span>);
  }
 }

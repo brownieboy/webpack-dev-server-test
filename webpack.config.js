@@ -14,27 +14,14 @@ var common = {
         path: path.resolve(ROOT_PATH, 'build'),
         filename: 'bundle.js'
     }
-
-    // ,module: {
-    // Don't include the same loader in multiple places.  Webpack will error out.
-    //     loaders: [{
-    //         test: /\.css$/,
-    //         loaders: ['style', 'css'],
-    //         include: path.resolve(ROOT_PATH, 'app')
-    //     }]
-    // }
-    // ,
-    // plugins: [
-    //   new HtmlwebpackPlugin({
-    //     title: 'Kanban app'
-    //   })
-    // ]
 };
 
 if (TARGET === 'start' || !TARGET) {
     module.exports = merge(common, {
         devtool: 'source-map',
         module: {
+            // Note: don't include the same loader in multiple places, e.g putting babel under "common" and here.
+            // Webpack will error out if you try this.
             loaders: [{
                 test: /\.jsx?$/,
                 loaders: ['react-hot', 'babel'],
