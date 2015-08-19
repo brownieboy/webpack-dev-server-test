@@ -21,7 +21,7 @@ var common = {
         loaders: [{
             test: /\.jsx$/,
             exclude: /node_modules/,
-            loaders: ['babel'],
+            loaders: ['babel']
         }]
     }
 };
@@ -30,23 +30,27 @@ var common = {
 if (TARGET === 'build') {
     module.exports = merge(common, {
         devtool: "source-map"
-        // plugins: [
-        //     new HtmlwebpackPlugin({
-        //         title: 'Webpack-dev-server test',
-        //         template: 'app/index.html',
-        //         inject: "body"
-        //     })
-        // ]
+            // plugins: [
+            //     new HtmlwebpackPlugin({
+            //         title: 'Webpack-dev-server test',
+            //         template: 'app/index.html',
+            //         inject: "body"
+            //     })
+            // ]
     });
 }
 
 
 if (TARGET === 'dev') {
     module.exports = merge(common, {
-        entry: {
-            app: ['webpack/hot/dev-server', path.resolve(ROOT_PATH, 'app/app')]
+        devtool: 'eval',
+        module: {
+            loaders: [{
+                test: /\.jsx$/,
+                exclude: /node_modules/,
+                loaders: ['react-hot', 'babel']
+            }]
         },
-        devtool: 'source-map',
         devServer: {
             colors: true,
             historyApiFallback: true,
