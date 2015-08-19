@@ -3,63 +3,53 @@ var HtmlwebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
 
-var TARGET = process.env.TARGET;
+var TARGET = process.env.npm_lifecycle_event;
 var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
-    entry: {
-        app: [path.resolve(ROOT_PATH, 'app/app')]
-    },
-    resolve: {
-        extensions: ['', '.js', '.jsx']
-    },
-    output: {
-        path: path.resolve(ROOT_PATH, 'build'),
-        filename: 'bundle.js'
-    },
-    module: {
-        loaders: [{
-            test: /\.jsx$/,
-            exclude: /node_modules/,
-            loaders: ['babel']
-        }]
-    }
+  entry: path.resolve(ROOT_PATH, 'app/app.jsx'),
+  output: {
+    path: path.resolve(ROOT_PATH, 'build'),
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+        include: path.resolve(ROOT_PATH, 'app')
+      }
+    ]
+  }
+  // ,
+  // plugins: [
+  //   new HtmlwebpackPlugin({
+  //     title: 'Kanban app'
+  //   })
+  // ]
 };
 
-
-if (TARGET === 'build') {
-    module.exports = merge(common, {
-        devtool: "source-map"
-            // plugins: [
-            //     new HtmlwebpackPlugin({
-            //         title: 'Webpack-dev-server test',
-            //         template: 'app/index.html',
-            //         inject: "body"
-            //     })
-            // ]
-    });
-}
-
-
-if (TARGET === 'dev') {
-    module.exports = merge(common, {
-        devtool: 'eval',
-        module: {
-            loaders: [{
-                test: /\.jsx$/,
-                exclude: /node_modules/,
-                loaders: ['react-hot', 'babel']
-            }]
-        },
-        devServer: {
-            colors: true,
-            historyApiFallback: true,
-            hot: true,
-            inline: true,
-            progress: true
-        },
-        plugins: [
-            new webpack.HotModuleReplacementPlugin() // Needs to be here, even with devServer.hot set to true
-        ]
-    });
+if(TARGET === 'start' || !TARGET) {
+  module.exports = merge(common, {
+    devtool: 'source-map',
+    module: {
+      loaders: [
+        {
+          test: /\.jsx?$/,
+          loaders: ['react-hot', 'babel'],
+          include: path.resolve(ROOT_PATH, 'app')
+        }
+      ]
+    },
+    devServer: {
+      colors: true,
+      historyApiFallback: true,
+      hot: true,
+      inline: true,
+      progress: true
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin()
+    ]
+  });
 }
