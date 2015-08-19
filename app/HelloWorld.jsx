@@ -6,6 +6,6 @@ export default class HelloClass extends React.Component {
     	super(props);
    }
    render() {
- 	   return(<span>Hello world 5</span>);
+ 	   return(<span>Hello world 1</span>);
    }
 }
