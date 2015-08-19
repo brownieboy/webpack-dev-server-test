@@ -5,7 +5,7 @@ A set of three tests of react-hot-loader module for Webpack.  Specifically, for 
 
 
 ###To Install Tests
-Open terminal at the webpack-dev-server-test and enter:
+Open a terminal at the webpack-dev-server-test folder and enter:
 
 ```npm install```
 
