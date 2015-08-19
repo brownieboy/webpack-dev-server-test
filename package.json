@@ -1,28 +1,34 @@
 {
-  "name": "react-dev-server-test",
-  "version": "0.0.1",
-  "description": "test for webpack-dev-server and hotloading",
-  "main": "index.js",
-  "scripts": {
-    "start": "webpack-dev-server"
-  },
-  "keywords": [
-    "webpack",
-    "demo"
-  ],
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "babel-core": "^5.8.19",
-    "babel-loader": "^5.3.2",
-    "html-webpack-plugin": "^1.6.0",
-    "node-libs-browser": "^0.5.2",
-    "react-hot-loader": "^1.2.8",
-    "webpack": "^1.10.1",
-    "webpack-dev-server": "^1.10.1",
-    "webpack-merge": "^0.1.2"
-  },
-  "dependencies": {
-    "react": "^0.13.3"
-  }
+    "name": "react-dev-server-test",
+    "version": "0.0.1",
+    "description": "test for webpack-dev-server and hotloading",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/brownieboy/webpack-dev-server-test.git"
+    },
+    "scripts": {
+        "start1": "webpack-dev-server",
+        "start2": "webpack-dev-server",
+        "start3": "webpack-dev-server"
+    },
+    "keywords": [
+        "webpack",
+        "demo"
+    ],
+    "author": "",
+    "license": "MIT",
+    "devDependencies": {
+        "babel-core": "^5.8.19",
+        "babel-loader": "^5.3.2",
+        "html-webpack-plugin": "^1.6.0",
+        "node-libs-browser": "^0.5.2",
+        "react-hot-loader": "^1.2.8",
+        "webpack": "^1.10.1",
+        "webpack-dev-server": "^1.10.1",
+        "webpack-merge": "^0.1.2"
+    },
+    "dependencies": {
+        "react": "^0.13.3"
+    }
 }
