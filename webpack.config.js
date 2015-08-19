@@ -47,7 +47,7 @@ if (TARGET === 'start1' || !TARGET) {
 }
 
 if (TARGET === 'start2' || !TARGET) {
-    // Test 2.  react-hot not used, with full source maps generated.
+    // Test 2.  react-hot not used, with full source maps generated (i.e. devtool set to "source-map".
     module.exports = merge(startCommon, {
         devtool: 'source-map',
         module: {
@@ -64,9 +64,26 @@ if (TARGET === 'start2' || !TARGET) {
 }
 
 if (TARGET === 'start3' || !TARGET) {
-    // Test 3.  react-hot loader used with only eval source maps (i.e. transpiled) generated
+    // Test 3.  react-hot loader used with only eval (i.e. transpiled source maps) generated
     module.exports = merge(startCommon, {
         devtool: 'eval',
+        module: {
+            // Note: don't include the same loader in multiple places, e.g putting babel under "common" and here.
+            // Webpack will error out if you try this.
+            loaders: [{
+                test: /\.jsx?$/,
+                loaders: ['react-hot', 'babel'],
+                include: path.resolve(ROOT_PATH, 'app')
+            }]
+        }
+
+    });
+}
+
+if (TARGET === 'start4' || !TARGET) {
+    // Test 2.  react-hot not used, with eval-source-map source maps generated.
+    module.exports = merge(startCommon, {
+        devtool: 'eval-source-map',
         module: {
             // Note: don't include the same loader in multiple places, e.g putting babel under "common" and here.
             // Webpack will error out if you try this.

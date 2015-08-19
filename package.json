@@ -10,7 +10,8 @@
     "scripts": {
         "start1": "webpack-dev-server",
         "start2": "webpack-dev-server",
-        "start3": "webpack-dev-server"
+        "start3": "webpack-dev-server",
+        "start4": "webpack-dev-server"
     },
     "keywords": [
         "webpack",
