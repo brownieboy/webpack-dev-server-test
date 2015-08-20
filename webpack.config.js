@@ -16,7 +16,7 @@ var common = {
     }
 };
 
-var startCommon = merge(common, {
+var devServerCommon = {
     devServer: {
         colors: true,
         historyApiFallback: true,
@@ -27,7 +27,9 @@ var startCommon = merge(common, {
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ]
-});
+};
+
+var startCommon = merge(common, devServerCommon);
 
 if (TARGET === 'start1' || !TARGET) {
     // Test 1.  react-hot loader used, with full source maps generated.
@@ -81,7 +83,7 @@ if (TARGET === 'start3' || !TARGET) {
 }
 
 if (TARGET === 'start4' || !TARGET) {
-    // Test 2.  react-hot not used, with eval-source-map source maps generated.
+    // Test 4.  react-hot not used, with eval-source-map source maps generated.
     module.exports = merge(startCommon, {
         devtool: 'eval-source-map',
         module: {
@@ -90,6 +92,31 @@ if (TARGET === 'start4' || !TARGET) {
             loaders: [{
                 test: /\.jsx?$/,
                 loaders: ['react-hot', 'babel'],
+                include: path.resolve(ROOT_PATH, 'app')
+            }]
+        }
+
+    });
+}
+
+
+if (TARGET === 'startnoreact' || !TARGET) {
+    // startnoreact.  No react at all.  
+    module.exports = merge(devServerCommon, {
+        entry: {
+            app: [path.resolve(ROOT_PATH, 'app/appbasic.js')]
+        },
+        output: {
+            path: path.resolve(ROOT_PATH, 'build'),
+            filename: 'bundle.js'
+        },
+        devtool: "eval-source-map",
+        module: {
+            // Note: don't include the same loader in multiple places, e.g putting babel under "common" and here.
+            // Webpack will error out if you try this.
+            loaders: [{
+                test: /\.jsx?$/,
+                loaders: ['babel'],
                 include: path.resolve(ROOT_PATH, 'app')
             }]
         }
